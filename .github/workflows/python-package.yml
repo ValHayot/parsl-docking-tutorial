@@ -1,0 +1,38 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  ci:
+    name: Rux tox
+    runs-on: ubuntu-latest
+    environment: hpcci
+
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.3'
+          cache: 'pip'
+      - name: Test Local Action
+        id: test-action
+        uses: ./
+        with:
+          client_id: ${{ secrets.GLOBUS_CLI_CLIENT_ID }}
+          client_secret: ${{ secrets.GLOBUS_CLI_CLIENT_SECRET }}
+          endpoint_uuid: '4084d11b-a58e-427a-90e6-e93d27d3f235'
+          shell_cmd: 'tox -- --durations=0'
+      - name: Print Output
+        id: output
+        run: echo "${{ steps.test-action.outputs.response }}"
