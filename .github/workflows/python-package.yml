@@ -29,8 +29,8 @@ jobs:
         id: pytest
         uses: ValHayot/globus-compute-github-action@v1
         with:
-          client_id: ${{ secrets.GLOBUS_CLI_CLIENT_ID }}
-          client_secret: ${{ secrets.GLOBUS_CLI_CLIENT_SECRET }}
+          client_id: ${{ secrets.GLOBUS_COMPUTE_CLIENT_ID }}
+          client_secret: ${{ secrets.GLOBUS_COMPUTE_CLIENT_SECRET }}
           endpoint_uuid: '9edd8398-6091-4138-abd8-e6ea11c5601c'
           shell_cmd: 'tox -- --durations=0'
       - name: Print Output
