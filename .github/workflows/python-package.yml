@@ -13,6 +13,15 @@ permissions:
 
 jobs:
   ci:
+    strategy:
+      matrix:
+        include:
+          - endpoint_uuid: '9edd8398-6091-4138-abd8-e6ea11c5601c'
+            user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/home/cc/miniconda3/envs/parsldockenv", "WORKING_DIR": "/home/cc" }'
+            clone_endpoint_config: '{ "WORKING_DIR": "/home/cc"}'
+          - endpoint_uuid: '01a2589a-25bb-4956-8f65-bbef9e328ed6'
+            user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/scratch/midway2/vhayot/miniconda3/envs/parsldockenv", "WORKING_DIR": "/scratch/midway2/vhayot/" }'
+            clone_endpoint_config: '{ "WORKING_DIR": "/scratch/midway2/vhayot/"}'
     name: Rux tox
     runs-on: ubuntu-latest
     environment: hpcci
@@ -31,10 +40,10 @@ jobs:
         with:
           client_id: ${{ secrets.GLOBUS_COMPUTE_CLIENT_ID }}
           client_secret: ${{ secrets.GLOBUS_COMPUTE_CLIENT_SECRET }}
-          endpoint_uuid: '9edd8398-6091-4138-abd8-e6ea11c5601c'
-          shell_cmd: 'cd gc-action-temp/parsl-docking-tutorial && tox'
-          user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/home/cc/miniconda3/envs/parsldockenv", "WORKING_DIR": "/home/cc" }'
-          clone_endpoint_config: '{ "WORKING_DIR": "/home/cc"}'
+          endpoint_uuid: ${{ matrix.endpoint_uuid }}
+          shell_cmd: 'cd gc-action-temp/parsl-docking-tutorial && tox -- --durations=0'
+          user_endpoint_config: ${{ matrix.user_endpoint_config }}
+          clone_endpoint_config: ${{ matrix.clone_endpoint_config }}
       - name: Archive output stdout
         uses: actions/upload-artifact@v4
         with:
