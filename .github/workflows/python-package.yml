@@ -32,7 +32,7 @@ jobs:
           client_id: ${{ secrets.GLOBUS_COMPUTE_CLIENT_ID }}
           client_secret: ${{ secrets.GLOBUS_COMPUTE_CLIENT_SECRET }}
           endpoint_uuid: '278a91a0-77d9-412f-9bfe-43312e2a268c' #'9edd8398-6091-4138-abd8-e6ea11c5601c'
-          shell_cmd: 'cd gc-action-temp/parsl-docking-tutorial && pip install tox'
+          shell_cmd: 'cd gc-action-temp/parsl-docking-tutorial && tox'
       - name: Print Output
         id: output
         run: echo "${{ steps.test-action.outputs.response }}"
