@@ -33,6 +33,7 @@ jobs:
           client_secret: ${{ secrets.GLOBUS_COMPUTE_CLIENT_SECRET }}
           endpoint_uuid: '9edd8398-6091-4138-abd8-e6ea11c5601c'
           shell_cmd: 'cd gc-action-temp/parsl-docking-tutorial && tox'
+          user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/home/cc/miniconda3/envs/parsldockenv" }'
       - name: Archive output stdout
         uses: actions/upload-artifact@v4
         with:
