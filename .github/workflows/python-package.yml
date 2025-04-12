@@ -25,9 +25,9 @@ jobs:
         with:
           python-version: '3.12.3'
           cache: 'pip'
-      - name: Test Local Action
-        id: test-action
-        uses: ./
+      - name: execute tests
+        id: pytest
+        uses: ValHayot/globus-compute-github-action@v1
         with:
           client_id: ${{ secrets.GLOBUS_CLI_CLIENT_ID }}
           client_secret: ${{ secrets.GLOBUS_CLI_CLIENT_SECRET }}
