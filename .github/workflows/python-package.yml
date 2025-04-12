@@ -20,7 +20,7 @@ jobs:
             user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/home/cc/miniconda3/envs/parsldockenv", "WORKING_DIR": "/home/cc" }'
             clone_endpoint_config: '{ "WORKING_DIR": "/home/cc"}'
           - endpoint_uuid: '01a2589a-25bb-4956-8f65-bbef9e328ed6'
-            user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/scratch/midway2/vhayot/miniconda3/envs/parsldockenv", "WORKING_DIR": "/scratch/midway2/vhayot/" }'
+            user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/scratch/midway2/vhayot/miniconda3/envs/parsldockenv; export PATH=/software/git-2.10-el7-x86_64/bin/:$PATH", "WORKING_DIR": "/scratch/midway2/vhayot/" }'
             clone_endpoint_config: '{ "WORKING_DIR": "/scratch/midway2/vhayot/"}'
     name: Rux tox
     runs-on: ubuntu-latest
