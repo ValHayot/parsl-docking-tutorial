@@ -31,7 +31,7 @@ jobs:
         with:
           client_id: ${{ secrets.GLOBUS_CLI_CLIENT_ID }}
           client_secret: ${{ secrets.GLOBUS_CLI_CLIENT_SECRET }}
-          endpoint_uuid: '4084d11b-a58e-427a-90e6-e93d27d3f235'
+          endpoint_uuid: '9edd8398-6091-4138-abd8-e6ea11c5601c'
           shell_cmd: 'tox -- --durations=0'
       - name: Print Output
         id: output
