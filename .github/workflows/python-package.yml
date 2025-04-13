@@ -17,12 +17,15 @@ jobs:
       matrix:
         include:
           - endpoint_uuid: '9edd8398-6091-4138-abd8-e6ea11c5601c'
-            user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/home/cc/miniconda3/envs/parsldockenv", "WORKING_DIR": "/home/cc" }'
+            user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/home/cc/miniconda3/envs/parsldockenv PD_CACHE=/home/cc/pd_cache", "WORKING_DIR": "/home/cc" }'
             clone_endpoint_config: '{ "WORKING_DIR": "/home/cc"}'
-          - endpoint_uuid: '01a2589a-25bb-4956-8f65-bbef9e328ed6'
-            user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/scratch/midway2/vhayot/miniconda3/envs/parsldockenv", "WORKING_DIR": "/scratch/midway2/vhayot/" }'
-            clone_endpoint_config: '{ "WORKER_INIT": "export PATH=/software/git-2.10-el7-x86_64/bin/:$PATH", "WORKING_DIR": "/scratch/midway2/vhayot/"}'
-    name: Rux tox
+          - endpoint_uuid: '49c363fc-27f2-4cd2-ac6c-61e9a70fef11'
+            user_endpoint_config: '{ "PROVIDER": "COMPUTE", "WORKER_INIT": "export MGLTOOLS_HOME=/scratch/user/u.vh86741/.conda/envs/parsldockenv PD_CACHE=/scratch/user/u.vh86741/pd_cache", "WORKING_DIR": "/scratch/user/u.vh86741/" }'
+            clone_endpoint_config: '{ "WORKING_DIR": "/scratch/user/u.vh86741/", "PROVIDER": "LOGIN"}'
+    #       - endpoint_uuid: '01a2589a-25bb-4956-8f65-bbef9e328ed6'
+    #         user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/scratch/midway2/vhayot/miniconda3/envs/parsldockenv", "WORKING_DIR": "/scratch/midway2/vhayot/" }'
+    #         clone_endpoint_config: '{ "WORKER_INIT": "export PATH=/software/git-2.10-el7-x86_64/bin/:$PATH", "WORKING_DIR": "/scratch/midway2/vhayot/"}'
+    # name: Rux tox
     runs-on: ubuntu-latest
     environment: hpcci
 
