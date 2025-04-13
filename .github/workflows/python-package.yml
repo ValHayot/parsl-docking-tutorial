@@ -44,7 +44,7 @@ jobs:
           client_id: ${{ secrets.GLOBUS_COMPUTE_CLIENT_ID }}
           client_secret: ${{ secrets.GLOBUS_COMPUTE_CLIENT_SECRET }}
           endpoint_uuid: ${{ matrix.endpoint_uuid }}
-          shell_cmd: 'cd gc-action-temp/parsl-docking-tutorial && tox -- --durations=0'
+          shell_cmd: 'cd gc-action-temp/parsl-docking-tutorial && pip install --no-index --find-links=${PD_CACHE} . pytest && pytest --durations=0'
           user_endpoint_config: ${{ matrix.user_endpoint_config }}
           clone_endpoint_config: ${{ matrix.clone_endpoint_config }}
       - name: Archive output stdout
