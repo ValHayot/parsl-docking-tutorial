@@ -17,8 +17,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - endpoint_uuid: '9edd8398-6091-4138-abd8-e6ea11c5601c'
-            user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/home/cc/miniconda3/envs/parsldockenv PD_CACHE=/home/cc/pd_cache", "WORKING_DIR": "/home/cc" }'
+          - endpoint_uuid: '28c931a4-87bc-4141-b66c-a35da99a1e6e'
+            user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/home/cc/miniconda3/envs/mepci PD_CACHE=/home/cc/pd_cache", "WORKING_DIR": "/home/cc" }'
             clone_endpoint_config: '{ "WORKING_DIR": "/home/cc"}'
             pd_cache: /home/cc/pd_cache
           - endpoint_uuid: '49c363fc-27f2-4cd2-ac6c-61e9a70fef11'
