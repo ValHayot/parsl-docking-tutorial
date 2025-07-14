@@ -49,7 +49,7 @@ jobs:
           cache: 'pip'
       - name: execute tests
         id: pytest
-        uses: ValHayot/globus-compute-github-action@v1
+        uses: globus-labs/correct@v1
         with:
           client_id: ${{ secrets.GLOBUS_COMPUTE_CLIENT_ID }}
           client_secret: ${{ secrets.GLOBUS_COMPUTE_CLIENT_SECRET }}
