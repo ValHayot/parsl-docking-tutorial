@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -28,12 +29,12 @@ jobs:
             user_endpoint_config: '{ "PROVIDER": "compute", "WORKER_INIT": "export MGLTOOLS_HOME=/home/vhayot/miniconda3/envs/parsldockenv PD_CACHE=/expanse/lustre/scratch/vhayot/temp_project/pd_cache; module load slurm; module load cpu", "WORKING_DIR": "/expanse/lustre/scratch/vhayot/temp_project" }'
             clone_endpoint_config: '{ "WORKING_DIR": "/expanse/lustre/scratch/vhayot/temp_project", "PROVIDER": "login"}'
             pd_cache: /expanse/lustre/scratch/vhayot/temp_project/pd_cache
-          
+
           # - endpoint_uuid: '01a2589a-25bb-4956-8f65-bbef9e328ed6'
           #   user_endpoint_config: '{ "PROVIDER": "compute", "WORKER_INIT": "export MGLTOOLS_HOME=/scratch/midway2/vhayot/miniconda3/envs/parsldockenv PD_CACHE=/scratch/midway2/vhayot/pd_cache", "WORKING_DIR": "/scratch/midway2/vhayot/" }'
           #   clone_endpoint_config: '{ "PROVIDER": "login", "WORKER_INIT": "export PATH=/software/git-2.10-el7-x86_64/bin/:$PATH", "WORKING_DIR": "/scratch/midway2/vhayot/"}'
           #   pd_cache: /scratch/midway2/vhayot/pd_cache
-            
+
     # name: Rux tox
     runs-on: ubuntu-latest
     environment: hpcci
