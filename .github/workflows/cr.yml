@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - endpoint_uuid: '28c931a4-87bc-4141-b66c-a35da99a1e6e'
+          - endpoint_uuid: '69b96500-d094-4139-87e3-8cf14db8f52f'
             user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/home/cc/miniconda3/envs/parsldockenv PD_CACHE=/home/cc/pd_cache", "WORKING_DIR": "/home/cc" }'
             clone_endpoint_config: '{ "WORKING_DIR": "/home/cc"}'
             pd_cache: /home/cc/pd_cache
