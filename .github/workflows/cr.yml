@@ -30,11 +30,6 @@ jobs:
             clone_endpoint_config: '{ "WORKING_DIR": "/expanse/lustre/scratch/vhayot/temp_project", "PROVIDER": "login"}'
             pd_cache: /expanse/lustre/scratch/vhayot/temp_project/pd_cache
 
-          # - endpoint_uuid: '01a2589a-25bb-4956-8f65-bbef9e328ed6'
-          #   user_endpoint_config: '{ "PROVIDER": "compute", "WORKER_INIT": "export MGLTOOLS_HOME=/scratch/midway2/vhayot/miniconda3/envs/parsldockenv PD_CACHE=/scratch/midway2/vhayot/pd_cache", "WORKING_DIR": "/scratch/midway2/vhayot/" }'
-          #   clone_endpoint_config: '{ "PROVIDER": "login", "WORKER_INIT": "export PATH=/software/git-2.10-el7-x86_64/bin/:$PATH", "WORKING_DIR": "/scratch/midway2/vhayot/"}'
-          #   pd_cache: /scratch/midway2/vhayot/pd_cache
-
     # name: Rux tox
     runs-on: ubuntu-latest
     environment: hpcci
@@ -58,15 +53,18 @@ jobs:
           user_endpoint_config: ${{ matrix.user_endpoint_config }}
           clone_endpoint_config: ${{ matrix.clone_endpoint_config }}
       - name: Archive output stdout
+        if: success() || failure()
         uses: actions/upload-artifact@v4
         with:
           name: pytest-stdout-${{ matrix.endpoint_uuid }}
           path: ${{ steps.pytest.outputs.stdout }}
       - name: Archive output stderr
+        if: success() || failure()
         uses: actions/upload-artifact@v4
         with:
           name: pytest-stderr-${{ matrix.endpoint_uuid }}
           path: ${{ steps.pytest.outputs.stderr }}
       - name: Print Output
+        if: success() || failure()
         id: output
         run: echo "${{ steps.test-action.outputs.response }}"
