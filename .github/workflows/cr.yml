@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - endpoint_uuid: '3bc205a7-9092-41dc-baad-30a599d138c3'
+          - endpoint_uuid: '6f6cae19-039d-4ebc-b408-d4516d54fb65'
             user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/home/cc/miniconda3/envs/parsldockenv PD_CACHE=/home/cc/pd_cache", "WORKING_DIR": "/home/cc" }'
             clone_endpoint_config: '{ "WORKING_DIR": "/home/cc"}'
             pd_cache: /home/cc/pd_cache
@@ -54,7 +54,7 @@ jobs:
           client_id: ${{ secrets.GLOBUS_COMPUTE_CLIENT_ID }}
           client_secret: ${{ secrets.GLOBUS_COMPUTE_CLIENT_SECRET }}
           endpoint_uuid: ${{ matrix.endpoint_uuid }}
-          shell_cmd: "cd gc-action-temp/parsl-docking-tutorial && pip install --no-index --find-links=${{ matrix.pd_cache }} . pytest && pytest --durations=0"
+          shell_cmd: "echo $PWD" #"cd gc-action-temp/parsl-docking-tutorial && pip install --no-index --find-links=${{ matrix.pd_cache }} . pytest && pytest --durations=0"
           user_endpoint_config: ${{ matrix.user_endpoint_config }}
           clone_endpoint_config: ${{ matrix.clone_endpoint_config }}
       - name: Archive output stdout
