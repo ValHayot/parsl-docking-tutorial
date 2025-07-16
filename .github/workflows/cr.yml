@@ -17,15 +17,23 @@ jobs:
     strategy:
       matrix:
         include:
-          - endpoint_uuid: 'f3a49da8-248a-4303-a644-23c34f92d005'
+          # Chameleon with Docker
+          - resource: chameleon
+            endpoint_uuid: 'f3a49da8-248a-4303-a644-23c34f92d005'
             user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/opt/conda/envs/parsldockenv PD_CACHE=/home/cc/pd_cache", "WORKING_DIR": "/home/cc" }'
             clone_endpoint_config: '{ "WORKING_DIR": "/home/cc"}'
             pd_cache: /home/cc/pd_cache
-          - endpoint_uuid: '49c363fc-27f2-4cd2-ac6c-61e9a70fef11'
+
+          # TAMU FASTER
+          - resource: faster
+            endpoint_uuid: '49c363fc-27f2-4cd2-ac6c-61e9a70fef11'
             user_endpoint_config: '{ "PROVIDER": "compute", "WORKER_INIT": "export MGLTOOLS_HOME=/scratch/user/u.vh86741/.conda/envs/parsldockenv PD_CACHE=/scratch/user/u.vh86741/pd_cache", "WORKING_DIR": "/scratch/user/u.vh86741/" }'
             clone_endpoint_config: '{ "WORKING_DIR": "/scratch/user/u.vh86741/", "PROVIDER": "login"}'
             pd_cache: /scratch/user/u.vh86741/pd_cache
-          - endpoint_uuid: 'f552060f-d470-42af-b03d-054bef373aa4'
+
+          # SDSC Expanse
+          - resource: expanse
+            endpoint_uuid: 'f552060f-d470-42af-b03d-054bef373aa4'
             user_endpoint_config: '{ "PROVIDER": "compute", "WORKER_INIT": "export MGLTOOLS_HOME=/home/vhayot/miniconda3/envs/parsldockenv PD_CACHE=/expanse/lustre/scratch/vhayot/temp_project/pd_cache; module load slurm; module load cpu", "WORKING_DIR": "/expanse/lustre/scratch/vhayot/temp_project" }'
             clone_endpoint_config: '{ "WORKING_DIR": "/expanse/lustre/scratch/vhayot/temp_project", "PROVIDER": "login"}'
             pd_cache: /expanse/lustre/scratch/vhayot/temp_project/pd_cache
