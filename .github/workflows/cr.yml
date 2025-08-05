@@ -19,7 +19,7 @@ jobs:
         include:
           # Chameleon with Docker
           - resource: chameleon
-            endpoint_uuid: 'f3a49da8-248a-4303-a644-23c34f92d005'
+            endpoint_uuid: '9d0d3c7a-8c72-4352-8502-6a3764b832d6' # 'f3a49da8-248a-4303-a644-23c34f92d005'
             user_endpoint_config: '{ "WORKER_INIT": "export MGLTOOLS_HOME=/opt/conda/envs/parsldockenv PD_CACHE=/home/cc/pd_cache", "WORKING_DIR": "/home/cc" }'
             clone_endpoint_config: '{ "WORKING_DIR": "/home/cc"}'
             pd_cache: /home/cc/pd_cache
